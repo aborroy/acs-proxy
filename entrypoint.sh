@@ -53,6 +53,10 @@ if [[ "$SOLR_ENABLED" == "true" ]]; then
   \      }'%g /etc/nginx/nginx.conf
 fi
 
+if [[ $ACA_URL ]]; then
+  sed -i s%http:\/\/content-app:8080%"$ACA_URL"%g /etc/nginx/nginx.conf
+fi
+
 if [[ $REPO_URL ]]; then
   sed -i s%http:\/\/alfresco:8080%"$REPO_URL"%g /etc/nginx/nginx.conf
 fi

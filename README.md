@@ -8,6 +8,7 @@ An enhanced Web Proxy container for ACS Community deployment.
 | --- | --- | --- |
 | REPO_URL | `http://alfresco:8080` | Repository URL inside network. |
 | SHARE_URL | `http://share:8080` | Share URL inside network. |
+| ACA_URL | `http://content-app:8080` | Alfresco Content Application URL inside network. |
 | SOLR_URL | `http://solr6:8983` | SOLR URL inside network. |
 | ACCESS_LOG | n/a | Set the `access_log` value. Set to `off` to switch off logging. |
 | PORT | `8080` | External port number for the Web Proxy |
