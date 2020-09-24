@@ -27,7 +27,7 @@ Repository SOLR REST APIs open to be used from Web Proxy.
 
 ```yml
 proxy:
-    image: aborroy/acs-proxy:1.0.0
+    image: angelborroy/acs-proxy:1.0.0
     environment:
       - ACA_ENABLED=false
       - SHARE_ENABLED=false
@@ -48,7 +48,7 @@ SSL Environment without Alfresco Content Application.
 
 ```yml
 proxy:
-    image: aborroy/acs-proxy:1.0.0
+    image: angelborroy/acs-proxy:1.0.0
     mem_limit: 128m
     environment:
       - ACA_ENABLED=false
