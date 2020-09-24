@@ -29,7 +29,7 @@ fi
 
 if [[ "$ACA_ENABLED" == "true" ]]; then
   sed -i s%\#ACA_ENDPOINT%"location / {\n\
-  \        proxy_pass http://alfresco:8080;\n\
+  \        proxy_pass http://content-app:8080;\n\
   \      }"%g /etc/nginx/nginx.conf
 fi
 
