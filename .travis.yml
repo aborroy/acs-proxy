@@ -28,7 +28,7 @@ jobs:
   include:
     - stage: Api Explorer Test
       name: Deploy with start script
-      script: chmod +x start.sh && ./start.sh && curl http://localhost:8080/api-explorer/
+      script: chmod +x start.sh && ./start.sh && curl http://localhost:80/api-explorer/
 
 after_failure:
   - docker-compose config
