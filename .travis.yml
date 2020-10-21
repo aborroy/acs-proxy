@@ -1,0 +1,35 @@
+language: node_js
+services: docker
+sudo: required
+node_js:
+  # - v12
+  - v10
+  # - v8
+  # - v6
+  # - v4
+# after_script: cat ./coverage/lcov.info | coveralls
+
+before_install:
+  - sudo /etc/init.d/postgresql stop
+  - npm init -y
+  - npm install -g yo
+  - npm install --global generator-alfresco-docker-installer
+  - npm link
+  - yo alfresco-docker-installer --acsVersion=6.2 --ram=8 --mariadb=false --https=false --serverName=localhost --port=80 --ftp=false --crossLocale=false --smtp=false --ldap=false --addons=js-console --startscript=true --windows=false
+  # remove volume which create a permission denied issue
+  - sed -i '\|logs/postgres|d' ./docker-compose.yml
+  # take nginx image from this repository
+  - "sed -i 's@image: angelborroy/acs-proxy@build: . # angelborroy/acs-proxy@g' ./docker-compose.yml"
+
+stages:
+  - name: Deploy Test
+
+jobs:
+  include:
+    - stage: Api Explorer Test
+      name: Deploy with start script
+      script: chmod +x start.sh && ./start.sh && curl http://localhost:80/api-explorer/
+
+after_failure:
+  - docker-compose config
+  - docker-compose logs

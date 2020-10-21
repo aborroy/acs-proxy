@@ -4,6 +4,7 @@ PORT="${PORT:-8080}"
 PROTOCOL="${PROTOCOL:-http}"
 ACA_ENABLED="${ACA_ENABLED:-true}"
 ALFRESCO_ENABLED="${ALFRESCO_ENABLED:-true}"
+API_EXPLORER_ENABLED="${API_EXPLORER_ENABLED:-true}"
 SHARE_ENABLED="${SHARE_ENABLED:-true}"
 SOLR_ENABLED="${SOLR_ENABLED:-true}"
 SOLR_PROTECT="${SOLR_PROTECT:-true}"
@@ -35,6 +36,12 @@ fi
 
 if [[ "$ALFRESCO_ENABLED" == "true" ]]; then
   sed -i s%\#ALFRESCO_ENDPOINT%"location /alfresco/ {\n\
+  \        proxy_pass http://alfresco:8080;\n\
+  \      }"%g /etc/nginx/nginx.conf
+fi
+
+if [[ "$API_EXPLORER_ENABLED" == "true" ]]; then
+  sed -i s%\#API_EXPLORER_ENABLED%"location /api-explorer/ {\n\
   \        proxy_pass http://alfresco:8080;\n\
   \      }"%g /etc/nginx/nginx.conf
 fi
