@@ -40,6 +40,12 @@ if [[ "$ALFRESCO_ENABLED" == "true" ]]; then
   \      }"%g /etc/nginx/nginx.conf
 fi
 
+if [[ "$API_EXPLORER_ENABLED" == "true" ]]; then
+  sed -i s%\#API_EXPLORER_ENABLED%"location /api-explorer/ {\n\
+  \        proxy_pass http://alfresco:8080;\n\
+  \      }"%g /etc/nginx/nginx.conf
+fi
+
 if [[ "$SHARE_ENABLED" == "true" ]]; then
   sed -i s%\#SHARE_ENDPOINT%"location /share/ {\n\
   \        proxy_pass http://share:8080;\n\

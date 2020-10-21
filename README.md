@@ -15,6 +15,7 @@ An enhanced Web Proxy container for ACS Community deployment.
 | PROTOCOL | `http` | External protocol for the Web Proxy: `http` or `https` |
 | ACA_ENABLED | `true` | Configure Web Proxy for Alfresco Content Application in context / when `true` |
 | ALFRESCO_ENABLED | `true` | Configure Web Proxy for Repository in context /alfresco when `true` |
+| API_EXPLORER_ENABLED | `true` | Configure Web Proxy for Repository in context /api-explorer when `true` |
 | SHARE_ENABLED | `true` | Configure Web Proxy for Share in context /share when `true` |
 | SOLR_ENABLED | `true` | Configure Web Proxy for SOLR in context /solr when `true`, protected by user/password |
 | SOLR_PROTECT | `true` | Disable the access to Repository SOLR REST APIs when `true`, so they cannot be accessed using the Web Proxy |
