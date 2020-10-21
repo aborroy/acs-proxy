@@ -19,7 +19,7 @@ before_install:
   # remove volume which create a permission denied issue
   - sed -i '\|logs/postgres|d' ./docker-compose.yml
   # take nginx image from this repository
-  - "sed -i '@image: angelborroy/acs-proxy@build: . # angelborroy/acs-proxy@' ./docker-compose.yml"
+  - "sed -i 's@image: angelborroy/acs-proxy@build: . # angelborroy/acs-proxy@g' ./docker-compose.yml"
 
 stages:
   - name: Deploy Test
