@@ -11,6 +11,7 @@ node_js:
 
 before_install:
   - sudo /etc/init.d/postgresql stop
+  - npm init -y
   - npm install -g yo
   - npm install --global generator-alfresco-docker-installer
   - npm link
